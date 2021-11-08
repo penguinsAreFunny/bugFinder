@@ -24,7 +24,7 @@ SonarQube v9.0.1.46107
 node v14.17.0
 ```
 # Configuration
-Each script has a configuration file.
+Each script has a configuration file.  
 See src/.../module_name/inversify.config.ts
 
 # Running
