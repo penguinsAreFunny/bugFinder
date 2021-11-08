@@ -1,0 +1,25 @@
+name: ml
+dependencies:
+  - python=3.8
+  - pip
+  - pip:
+      # Libraries
+    - sweetviz
+    - ipython
+    - ipykernel
+    - tensorflow==2.4.*
+    - scikit-learn
+    - scipy
+    - numpy==1.19.*
+    - matplotlib
+    - pandas
+    # Linting/Tooling
+    - pylint
+    - flake8
+    - mypy
+    - isort
+    - autopep8
+    - pre-commit
+    - black==21.4b0
+    # AutoML
+    - tpot

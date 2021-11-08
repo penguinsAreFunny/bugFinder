@@ -1,0 +1,36 @@
+[submodule "packages/bugFinder-localityRecorder-commit"]
+	path = packages/bugFinder-localityRecorder-commit
+	url = https://github.com/penguinsAreFunny/bugFinder-localityRecorder-commit
+[submodule "packages/bugfinder-framework-defaultContainer"]
+	path = packages/bugfinder-framework-defaultContainer
+	url = https://github.com/penguinsAreFunny/bugfinder-framework-defaultContainer
+[submodule "packages/bugFinder-commitPath-localityPreprocessor-commitSubset"]
+	path = packages/bugFinder-commitPath-localityPreprocessor-commitSubset
+	url = https://github.com/penguinsAreFunny/bugFinder-commitPath-localityPreprocessor-commitSubset
+[submodule "packages/bugFinder-commitPath-annotator-commitMsgWindow"]
+	path = packages/bugFinder-commitPath-annotator-commitMsgWindow
+	url = https://github.com/penguinsAreFunny/bugFinder-commitPath-annotator-commitMsgWindow
+[submodule "packages/bugFinder-commitPath-quantifier-sonarqubePredecessors"]
+	path = packages/bugFinder-commitPath-quantifier-sonarqubePredecessors
+	url = https://github.com/penguinsAreFunny/bugFinder-commitPath-quantifier-sonarqubePredecessors
+[submodule "packages/bugFinder-commitPath-quantifier-sonarqube"]
+	path = packages/bugFinder-commitPath-quantifier-sonarqube
+	url = https://github.com/penguinsAreFunny/bugFinder-commitPath-quantifier-sonarqube
+[submodule "packages/bugFinder-commitpath-number-sonarqube-preprocessor-featureSelection"]
+	path = packages/bugFinder-commitpath-number-sonarqube-preprocessor-featureSelection
+	url = https://github.com/penguinsAreFunny/bugFinder-commitpath-number-sonarqube-preprocessor-featureSelection
+[submodule "packages/bugFinder-localityRecorder-commitPath"]
+	path = packages/bugFinder-localityRecorder-commitPath
+	url = https://github.com/penguinsAreFunny/bugFinder-localityRecorder-commitPath
+[submodule "packages/bugFinder-commitPath-annotator-commitMsg"]
+	path = packages/bugFinder-commitPath-annotator-commitMsg
+	url = https://github.com/penguinsAreFunny/bugFinder-commitPath-annotator-commitMsg
+[submodule "packages/bugFinder-db-commit-mongodb"]
+	path = packages/bugFinder-db-commit-mongodb
+	url = https://github.com/penguinsAreFunny/bugFinder-db-commit-mongodb
+[submodule "packages/bugFinder-commitPath-db-mongodb"]
+	path = packages/bugFinder-commitPath-db-mongodb
+	url = https://github.com/penguinsAreFunny/bugFinder-commitPath-db-mongodb
+[submodule "packages/bugFinder-framework"]
+	path = packages/bugFinder-framework
+	url = https://github.com/penguinsAreFunny/bugFinder-framework

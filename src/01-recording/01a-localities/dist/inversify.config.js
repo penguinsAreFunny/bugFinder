@@ -1,0 +1,29 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.container = void 0;
+var path = require("path");
+var bugfinder_localityrecorder_commit_1 = require("bugfinder-localityrecorder-commit");
+var bugfinder_framework_1 = require("bugfinder-framework");
+var bugfinder_localityrecorder_commitpath_1 = require("bugfinder-localityrecorder-commitpath");
+var bugfinder_commitpath_db_mongodb_1 = require("bugfinder-commitpath-db-mongodb");
+var bugfinder_framework_defaultcontainer_1 = require("bugfinder-framework-defaultcontainer");
+var container = bugfinder_framework_defaultcontainer_1.localityAContainer;
+exports.container = container;
+var projectRoot = path.join(process.cwd(), "../repositories/TypeScript");
+var gitOptions = {
+    baseDir: projectRoot,
+    maxConcurrentProcesses: 4
+};
+var mongoDBConfig = {
+    url: "mongodb://localhost:27017",
+    dbName: "TEST"
+};
+// binding localityRecorder and its dependencies
+container.bind(bugfinder_framework_1.LOCALITY_RECORDING_TYPES.localityRecorder).to(bugfinder_localityrecorder_commitpath_1.CommitPathRecorder);
+container.bind(bugfinder_localityrecorder_commitpath_1.BUGFINDER_LOCALITYRECORDER_COMMITPATH_TYPES.commitRecorder).to(bugfinder_localityrecorder_commit_1.CommitRecorder);
+// bindings used in CommitRecorder
+container.bind(bugfinder_localityrecorder_commit_1.BUGFINDER_LOCALITYRECORDER_COMMIT_TYPES.gitOptions).toConstantValue(gitOptions);
+// binding db and its dependencies
+container.bind(bugfinder_framework_1.LOCALITY_RECORDING_TYPES.db).to(bugfinder_commitpath_db_mongodb_1.CommitPathsMongoDB);
+container.bind(bugfinder_commitpath_db_mongodb_1.BUGFINDER_DB_COMMITPATH_MONGODB_TYPES.mongoDBConfig).toConstantValue(mongoDBConfig);
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW52ZXJzaWZ5LmNvbmZpZy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uL2ludmVyc2lmeS5jb25maWcudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7O0FBQUEsMkJBQThCO0FBQzlCLHVGQUcyQztBQUMzQywyREFBbUY7QUFFbkYsK0ZBSStDO0FBQy9DLG1GQUEwRztBQUMxRyw2RkFBd0U7QUFFeEUsSUFBTSxTQUFTLEdBQUcseURBQWtCLENBQUM7QUF5QjdCLDhCQUFTO0FBeEJqQixJQUFNLFdBQVcsR0FBVyxJQUFJLENBQUMsSUFBSSxDQUFDLE9BQU8sQ0FBQyxHQUFHLEVBQUUsRUFBRSw0QkFBNEIsQ0FBQyxDQUFBO0FBRWxGLElBQU0sVUFBVSxHQUFlO0lBQzNCLE9BQU8sRUFBRSxXQUFXO0lBQ3BCLHNCQUFzQixFQUFFLENBQUM7Q0FDNUIsQ0FBQTtBQUVELElBQU0sYUFBYSxHQUFrQjtJQUNqQyxHQUFHLEVBQUUsMkJBQTJCO0lBQ2hDLE1BQU0sRUFBRSxNQUFNO0NBQ2pCLENBQUE7QUFJRCxnREFBZ0Q7QUFDaEQsU0FBUyxDQUFDLElBQUksQ0FBK0IsOENBQXdCLENBQUMsZ0JBQWdCLENBQUMsQ0FBQyxFQUFFLENBQUMsMERBQWtCLENBQUMsQ0FBQTtBQUM5RyxTQUFTLENBQUMsSUFBSSxDQUEyQixtRkFBMkMsQ0FBQyxjQUFjLENBQUMsQ0FBQyxFQUFFLENBQUMsa0RBQWMsQ0FBQyxDQUFBO0FBQ3ZILGtDQUFrQztBQUNsQyxTQUFTLENBQUMsSUFBSSxDQUFhLDJFQUF1QyxDQUFDLFVBQVUsQ0FBQyxDQUFDLGVBQWUsQ0FBQyxVQUFVLENBQUMsQ0FBQTtBQUUxRyxrQ0FBa0M7QUFDbEMsU0FBUyxDQUFDLElBQUksQ0FBMkIsOENBQXdCLENBQUMsRUFBRSxDQUFDLENBQUMsRUFBRSxDQUFDLG9EQUFrQixDQUFDLENBQUM7QUFDN0YsU0FBUyxDQUFDLElBQUksQ0FBZ0IsdUVBQXFDLENBQUMsYUFBYSxDQUFDLENBQUMsZUFBZSxDQUFDLGFBQWEsQ0FBQyxDQUFDIn0=
