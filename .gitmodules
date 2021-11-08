@@ -25,9 +25,6 @@
 [submodule "packages/bugFinder-commitPath-annotator-commitMsg"]
 	path = packages/bugFinder-commitPath-annotator-commitMsg
 	url = https://github.com/penguinsAreFunny/bugFinder-commitPath-annotator-commitMsg
-[submodule "packages/bugFinder-db-commit-mongodb"]
-	path = packages/bugFinder-db-commit-mongodb
-	url = https://github.com/penguinsAreFunny/bugFinder-db-commit-mongodb
 [submodule "packages/bugFinder-commitPath-db-mongodb"]
 	path = packages/bugFinder-commitPath-db-mongodb
 	url = https://github.com/penguinsAreFunny/bugFinder-commitPath-db-mongodb
