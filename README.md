@@ -4,7 +4,7 @@ This is a MonoRepository which aims to automatically find bugs in source code ba
 This package contains all programms needed to run to generate a learning dataset. It uses partial implementations of the bugFinder-framework which are placed in the packages directory. You can find these packages on npm, too. 
 
 # Pre
-git submodule update --recursive --remote
+git submodule update --init --recursive
 npm install
 
 Used Versions

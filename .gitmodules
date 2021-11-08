@@ -37,3 +37,6 @@
 [submodule "packages/bugFinder-framework-defaultContainer"]
 	path = packages/bugFinder-framework-defaultContainer
 	url = https://github.com/penguinsAreFunny/bugFinder-framework-defaultContainer
+[submodule "packages/bugFinder-db-commit-mongodb"]
+	path = packages/bugFinder-db-commit-mongodb
+	url = https://github.com/penguinsAreFunny/bugFinder-db-commit-mongodb
