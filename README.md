@@ -22,6 +22,7 @@ Used Versions
 git v2.33.1
 SonarQube v9.0.1.46107  
 node v14.17.0
+Anaconda3 2020.07 (Python 3.8.3 64-bit)
 ```
 # Configuration
 Each script has a configuration file.  
@@ -38,3 +39,7 @@ npm run recording-02b-annotations
 npm run preprocessing
 npm run training
 ```
+
+# Machine Learning
+The training phase is not automated. You can use packages/bugFinder-machineLearning as a template.  
+For further readings see [bugFinder-machineLearning](#https://github.com/penguinsAreFunny/bugFinder-machineLearning)

@@ -40,3 +40,6 @@
 [submodule "packages/bugFinder-db-commit-mongodb"]
 	path = packages/bugFinder-db-commit-mongodb
 	url = https://github.com/penguinsAreFunny/bugFinder-db-commit-mongodb
+[submodule "packages/bugFinder-machineLearning"]
+	path = packages/bugFinder-machineLearning
+	url = https://github.com/penguinsAreFunny/bugFinder-machineLearning
