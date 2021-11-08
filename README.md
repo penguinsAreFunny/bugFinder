@@ -15,7 +15,6 @@ git submodule update --init --recursive
 npm install  
 ```
 You won´t need SonarQube, if you do not like to quantify with SonarQubeQuantifier  
-You won´t need git, if you do not like to use localityRecorder-Commit or CommitPath
 
 Used Versions
 ```
