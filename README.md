@@ -10,17 +10,19 @@ This package uses [bugFinder-framework](#https://github.com/penguinsAreFunny/bug
 and implementation-packages of bugFinder-framework-interfaces.
 
 # Pre
+```
 git submodule update --init --recursive  
 npm install  
-
+```
 You won´t need SonarQube, if you do not like to quantify with SonarQubeQuantifier  
 You won´t need git, if you do not like to use localityRecorder-Commit or CommitPath
 
 Used Versions
-    git v2.33.1
-    SonarQube v9.0.1.46107  
-    node v14.17.0
-
+```
+git v2.33.1
+SonarQube v9.0.1.46107  
+node v14.17.0
+```
 # Configuration
 Each script has a configuration file.
 See src/.../module_name/inversify.config.ts
