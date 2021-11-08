@@ -31,3 +31,9 @@
 [submodule "packages/bugFinder-framework"]
 	path = packages/bugFinder-framework
 	url = https://github.com/penguinsAreFunny/bugFinder-framework
+[submodule "packages/bugFinder-commitPath-annotator-commitMsgPredecessors"]
+	path = packages/bugFinder-commitPath-annotator-commitMsgPredecessors
+	url = https://github.com/penguinsAreFunny/bugFinder-commitPath-annotator-commitMsgPredecessors
+[submodule "packages/bugFinder-framework-defaultContainer"]
+	path = packages/bugFinder-framework-defaultContainer
+	url = https://github.com/penguinsAreFunny/bugFinder-framework-defaultContainer
