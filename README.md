@@ -6,7 +6,7 @@ This package contains all programms needed to run to generate a learning dataset
 It uses partial implementations of the bugFinder-framework which are placed in  
 the packages directory. You can find these packages on npm, too.   
 
-This package uses [bugFinder-framework](#https://github.com/penguinsAreFunny/bugFinder-framework)
+This package uses [bugFinder-framework](https://github.com/penguinsAreFunny/bugFinder-framework)
 and implementation-packages of bugFinder-framework-interfaces.
 
 # Pre
