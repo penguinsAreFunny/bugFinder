@@ -10,8 +10,6 @@ import {BUGFINDER_DB_COMMITPATH_MONGODB_TYPES, CommitPathsMongoDB} from "bugfind
 import {MongoDBConfig} from "bugfinder-commit-db-mongodb";
 import {CommitPath} from "bugfinder-localityrecorder-commitpath";
 import {Logger} from "ts-log";
-import {PythonInterface} from "./src/pythonInterface";
-import {Trainer} from "./src/trainer";
 
 const container = featureExtractionContainer
 
@@ -32,8 +30,6 @@ const logOptions: LogConfig = {
 container.bind<DB<CommitPath, any, any>>(TRAINING_TYPES.db).to(CommitPathsMongoDB)
 container.bind<MongoDBConfig>(BUGFINDER_DB_COMMITPATH_MONGODB_TYPES.mongoDBConfig).toConstantValue(mongoDBConfig)
 
-// binding FeatureExtractor and its dependencies
-container.bind<Trainer>(TRAINING_TYPES.trainer).to(PythonInterface)
 
 // binding logger and its config
 container.bind<Logger>(SHARED_TYPES.logger).to(FileAndConsoleLogger)

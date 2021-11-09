@@ -34,11 +34,11 @@ var DecisionTree = /** @class */ (function () {
     function DecisionTree() {
     }
     DecisionTree.prototype.train = function (dataset) {
-        var pythonWd = path.join(__dirname, "python");
+        var pythonWd = path.join(__dirname, "src");
         var datasetPath = path.join(pythonWd, "dataset_5_5.json");
         fs.writeFileSync(datasetPath, JSON.stringify(dataset));
         var stdout1 = (0, child_process_1.execSync)("conda activate ./ml_env", { cwd: pythonWd });
-        var stdout2 = (0, child_process_1.execSync)("python main.py " + datasetPath, { cwd: pythonWd });
+        var stdout2 = (0, child_process_1.execSync)("src main.py " + datasetPath, { cwd: pythonWd });
         console.log(stdout1.toString());
         console.log(stdout2.toString());
         console.log("PythonWD: ", pythonWd);

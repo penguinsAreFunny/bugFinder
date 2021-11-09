@@ -9,17 +9,17 @@ import * as path from "path"
 export class PythonInterface implements Trainer{
 
     train(dataset: Dataset) {
-        const pythonWd = path.join(__dirname, "python")
+        const pythonWd = path.join(__dirname, "src")
         const datasetPath = path.join(pythonWd, "dataset_5_5.json")
-        const datasetPathSrc = "./python/dataset_5_5.json"
+        const datasetPathSrc = "./src/dataset_5_5.json"
         fs.writeFileSync(datasetPath, JSON.stringify(dataset))
         fs.writeFileSync(datasetPathSrc, JSON.stringify(dataset))
 
-        console.log("This is only an interface to support machine learning with python.")
+        console.log("This is only an interface to support machine learning with src.")
         console.log("Feel free to model the whole training process, if you like to automate training.")
         console.log("This function will only dump the dataset to a json file so that you can train with the" +
-            " given python templates or your own python scripts.")
-        console.log("Have a look at src/python/main.ipynb. Run conda activate ./ml_env to use the template scripts.")
+            " given src templates or your own src scripts.")
+        console.log("Have a look at src/src/main.ipynb. Run conda activate ./ml_env to use the template scripts.")
         console.log(`You can find the dataset as a json-file with path: ${datasetPathSrc}.`)
         console.log("Use the Python scripts to select and train a suitable model.")
 
