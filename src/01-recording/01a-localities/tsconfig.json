@@ -1,7 +1,7 @@
 {
   "extends": "../../../tsconfig-base.json",
   "include": [
-    "./main.ts"
+    "./localityRecording.ts"
   ],
   "compilerOptions": {
     "outDir": "./dist"
