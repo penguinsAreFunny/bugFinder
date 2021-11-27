@@ -42,14 +42,13 @@ and implementation-packages of bugFinder-framework-interfaces.
 git submodule update --init --recursive  
 npm install  
 ```
-You won´t need SonarQube, if you do not like to quantify with SonarQubeQuantifier.
-If you want to use SonarQube for quantifications
-Used Versions
+You won´t need SonarQube, if you do not like to quantify with SonarQubeQuantifier.  
+If you do not want to use localityRecorder-commit or localityRecorder-commitPath you won´t need git either.  
+Used versions
 ```
 git v2.33.1
 SonarQube v9.0.1.46107  
 node v14.17.0
-Anaconda3 2020.07 (Python 3.8.3 64-bit)
 ```
 # Configuration
 Each script has a configuration file.  
