@@ -1,17 +1,3 @@
-- [Description](#description)
-- [Pre](#pre)
-- [Configuration](#configuration)
-- [Running](#running)
-- [Machine Learning](#machine-learning)
-- [Concept](#concept)
-  * [Record localities](#record-localities)
-  * [Preprocess localities](#preprocess-localities)
-  * [Quantify localities](#quantify-localities)
-  * [Annotate localities](#annotate-localities)
-  * [Preprocess quantified and annotated localities](#preprocess-quantified-and-annotated-localities)
-
-<!-- <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small> -->
-
 # Description
 This is a MonoRepository which aims to automatically find bugs in source code  
 based on software-metrics.
@@ -23,13 +9,34 @@ the packages directory. You can find these packages on npm, too.
 This package uses [bugFinder-framework](https://github.com/penguinsAreFunny/bugFinder-framework)
 and implementation-packages of bugFinder-framework-interfaces.
 
+
+# Table of contents
+- [Description](#description)
+- [Table of contents](#table-of-contents)
+- [Pre](#pre)
+- [Configuration](#configuration)
+- [Running](#running)
+- [Machine Learning](#machine-learning)
+- [Concept](#concept)
+- [Pipeline](#pipeline)
+  * [Record localities](#record-localities)
+  * [Preprocess localities](#preprocess-localities)
+  * [Quantify localities](#quantify-localities)
+  * [Annotate localities](#annotate-localities)
+  * [Preprocess quantified and annotated localities](#preprocess-quantified-and-annotated-localities)
+- [Blackboard](#blackboard)
+  * [Controller](#controller)
+  * [Knowledge Sources](#knowledge-sources)
+
+<!-- <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small> -->
+
 # Pre
 ```
 git submodule update --init --recursive  
 npm install  
 ```
-You won´t need SonarQube, if you do not like to quantify with SonarQubeQuantifier  
-
+You won´t need SonarQube, if you do not like to quantify with SonarQubeQuantifier.
+If you want to use SonarQube for quantifications
 Used Versions
 ```
 git v2.33.1
@@ -58,8 +65,12 @@ The training phase is not automated. You can use packages/bugFinder-machineLearn
 For further readings see [bugFinder-machineLearning](#https://github.com/penguinsAreFunny/bugFinder-machineLearning)
 
 # Concept
+The architecture of this project is based on a pipeline and a blackboard architecture.
+
+# Pipeline
 The whole process of finding bugs in source code with machine learning is modeled as a pipeline:  
 ![Machine_Learning_Pipeline](./doc/Pipeline.svg)  
+
 
 ## Record localities
 Record localities you want to find bugs in. F.e. a Commit or a path in a commit.
@@ -75,3 +86,14 @@ F.e. Take the next five changes of a file into account and measure how many bug 
 ## Preprocess quantified and annotated localities
 With the goal of achieving a dataset, which can be easily used with [scikit-learn](#https://scikit-learn.org/stable/) your
 quantified and annotated localities need to be transformed to a suitable format. You might want to filter features or samples you do not want to consider.
+
+# Blackboard  
+![solution_strategy](./doc/loesungsstrategie.svg)  
+![recording](./doc/Bausteinsicht-Recording.svg)  
+
+## Controller
+For each step of the pipeline there is a controller. Each steps uses a knowledge source.
+The controllers are pictured on the left side of the picture. The Recording-Component consists of
+the components localityRecording, localityPreprocessing, quantifying and annotating.  
+## Knowledge Sources
+The knowledge sources (right part of the picture) can be exchanged. Dependency injection with [InversifyJS](#https://github.com/inversify/InversifyJS) is used.
