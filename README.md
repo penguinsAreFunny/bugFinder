@@ -76,7 +76,7 @@ The architecture of this project is based on a pipeline and a blackboard archite
 
 # Pipeline
 The whole process of finding bugs in source code with machine learning is modeled as a pipeline:  
-![Machine_Learning_Pipeline](./doc/Pipeline.svg)  
+![Machine_Learning_Pipeline](./doc/Pipeline.svg | width=75)  
 
 
 ## Record localities
@@ -95,8 +95,8 @@ With the goal of achieving a dataset, which can be easily used with [scikit-lear
 quantified and annotated localities need to be transformed to a suitable format. You might want to filter features or samples you do not want to consider.
 
 # Blackboard  
-![solution_strategy](./doc/loesungsstrategie.svg)  
-![recording](./doc/Bausteinsicht-Recording.svg)  
+![solution_strategy](./doc/loesungsstrategie.svg | width=75)  
+![recording](./doc/Bausteinsicht-Recording.svg | width=75)  
 
 ## Controller
 For each step of the pipeline there is a controller. Each steps uses a knowledge source.
