@@ -35,34 +35,75 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __values = (this && this.__values) || function(o) {
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+    if (m) return m.call(o);
+    if (o && typeof o.length === "number") return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
 var inversify_config_1 = require("./inversify.config");
 var bugfinder_framework_1 = require("bugfinder-framework");
+var fs_1 = __importDefault(require("fs"));
 function topLevelAwaitWrapper() {
     return __awaiter(this, void 0, void 0, function () {
-        var trainer, db, dataset, error_1;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
+        var db, datasetsIDs, datasetsIDs_1, datasetsIDs_1_1, datasetID, dataset, e_1_1;
+        var e_1, _a;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
                 case 0:
-                    _a.trys.push([0, 3, , 4]);
-                    trainer = inversify_config_1.container.get(bugfinder_framework_1.TRAINING_TYPES.trainer);
                     db = inversify_config_1.container.get(bugfinder_framework_1.TRAINING_TYPES.db);
-                    return [4 /*yield*/, db.readDataset("DatasetAP_predQuanti_postAnno_5_5")];
+                    console.log("This is only an interface to support machine learning with src.");
+                    console.log("Feel free to model the whole training process, if you like to automate training.");
+                    console.log("This function will only dump the datasets to json-files so that you can train with the" +
+                        " given template-project bugFinder-machineLearning or your own scripts.");
+                    datasetsIDs = inversify_config_1.container.get("DATASETS_IDs");
+                    _b.label = 1;
                 case 1:
-                    dataset = _a.sent();
-                    return [4 /*yield*/, trainer.train(dataset)];
+                    _b.trys.push([1, 6, 7, 8]);
+                    datasetsIDs_1 = __values(datasetsIDs), datasetsIDs_1_1 = datasetsIDs_1.next();
+                    _b.label = 2;
                 case 2:
-                    _a.sent();
-                    return [3 /*break*/, 4];
+                    if (!!datasetsIDs_1_1.done) return [3 /*break*/, 5];
+                    datasetID = datasetsIDs_1_1.value;
+                    return [4 /*yield*/, db.readDataset(datasetID)];
                 case 3:
-                    error_1 = _a.sent();
-                    console.log("ERROR: ", error_1);
-                    return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
+                    dataset = _b.sent();
+                    toFile(dataset, datasetID);
+                    _b.label = 4;
+                case 4:
+                    datasetsIDs_1_1 = datasetsIDs_1.next();
+                    return [3 /*break*/, 2];
+                case 5: return [3 /*break*/, 8];
+                case 6:
+                    e_1_1 = _b.sent();
+                    e_1 = { error: e_1_1 };
+                    return [3 /*break*/, 8];
+                case 7:
+                    try {
+                        if (datasetsIDs_1_1 && !datasetsIDs_1_1.done && (_a = datasetsIDs_1.return)) _a.call(datasetsIDs_1);
+                    }
+                    finally { if (e_1) throw e_1.error; }
+                    return [7 /*endfinally*/];
+                case 8: return [2 /*return*/];
             }
         });
     });
 }
+function toFile(dataset, datasetName) {
+    var datasetPathSrc = "./src/" + datasetName;
+    fs_1.default.writeFileSync(datasetPathSrc, JSON.stringify(dataset));
+    console.log("You can find the dataset as a json-file with path: " + datasetPathSrc + ".");
+    console.log("Use the Python scripts to select and train a suitable model.");
+}
 topLevelAwaitWrapper();
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibWFpbi5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uL21haW4udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSw0QkFBMEI7QUFDMUIsdURBQTRDO0FBQzVDLDJEQUc2QjtBQUc3QixTQUFlLG9CQUFvQjs7Ozs7OztvQkFHckIsT0FBTyxHQUFHLDRCQUFTLENBQUMsR0FBRyxDQUFlLG9DQUFjLENBQUMsT0FBTyxDQUFDLENBQUE7b0JBQzdELEVBQUUsR0FBRyw0QkFBUyxDQUFDLEdBQUcsQ0FBb0Isb0NBQWMsQ0FBQyxFQUFFLENBQUMsQ0FBQTtvQkFFOUMscUJBQU0sRUFBRSxDQUFDLFdBQVcsQ0FBQyxtQ0FBbUMsQ0FBQyxFQUFBOztvQkFBbkUsT0FBTyxHQUFHLFNBQXlEO29CQUN6RSxxQkFBTSxPQUFPLENBQUMsS0FBSyxDQUFDLE9BQU8sQ0FBQyxFQUFBOztvQkFBNUIsU0FBNEIsQ0FBQTs7OztvQkFHNUIsT0FBTyxDQUFDLEdBQUcsQ0FBQyxTQUFTLEVBQUUsT0FBSyxDQUFDLENBQUM7Ozs7OztDQUdyQztBQUVELG9CQUFvQixFQUFFLENBQUMifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibWFpbi5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uL21haW4udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLDRCQUEwQjtBQUMxQix1REFBNEM7QUFDNUMsMkRBSTZCO0FBRTdCLDBDQUFvQjtBQUVwQixTQUFlLG9CQUFvQjs7Ozs7OztvQkFDekIsRUFBRSxHQUFHLDRCQUFTLENBQUMsR0FBRyxDQUFvQixvQ0FBYyxDQUFDLEVBQUUsQ0FBQyxDQUFBO29CQUU5RCxPQUFPLENBQUMsR0FBRyxDQUFDLGlFQUFpRSxDQUFDLENBQUE7b0JBQzlFLE9BQU8sQ0FBQyxHQUFHLENBQUMsa0ZBQWtGLENBQUMsQ0FBQTtvQkFDL0YsT0FBTyxDQUFDLEdBQUcsQ0FBQyx3RkFBd0Y7d0JBQ2hHLHdFQUF3RSxDQUFDLENBQUE7b0JBRXZFLFdBQVcsR0FBRyw0QkFBUyxDQUFDLEdBQUcsQ0FBVyxjQUFjLENBQUMsQ0FBQTs7OztvQkFDcEMsZ0JBQUEsU0FBQSxXQUFXLENBQUE7Ozs7b0JBQXhCLFNBQVM7b0JBQ0MscUJBQU0sRUFBRSxDQUFDLFdBQVcsQ0FBQyxTQUFTLENBQUMsRUFBQTs7b0JBQXpDLE9BQU8sR0FBRyxTQUErQjtvQkFDL0MsTUFBTSxDQUFDLE9BQU8sRUFBRSxTQUFTLENBQUMsQ0FBQTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Q0FFakM7QUFFRCxTQUFTLE1BQU0sQ0FBQyxPQUFnQixFQUFFLFdBQVc7SUFDekMsSUFBTSxjQUFjLEdBQUcsUUFBUSxHQUFHLFdBQVcsQ0FBQTtJQUM3QyxZQUFFLENBQUMsYUFBYSxDQUFDLGNBQWMsRUFBRSxJQUFJLENBQUMsU0FBUyxDQUFDLE9BQU8sQ0FBQyxDQUFDLENBQUE7SUFDekQsT0FBTyxDQUFDLEdBQUcsQ0FBQyx3REFBc0QsY0FBYyxNQUFHLENBQUMsQ0FBQTtJQUNwRixPQUFPLENBQUMsR0FBRyxDQUFDLDhEQUE4RCxDQUFDLENBQUE7QUFDL0UsQ0FBQztBQUdELG9CQUFvQixFQUFFLENBQUMifQ==

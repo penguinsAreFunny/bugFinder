@@ -16,7 +16,7 @@ import {
 const container = preprocessingContainer;
 const mongoDBConfig: MongoDBConfig = {
     url: "mongodb://localhost:27017",
-    dbName: "TypeScript_v2"
+    dbName: "EXPERIMENTAL"
 }
 
 const logOptions: LogConfig = {
@@ -44,9 +44,9 @@ const trace: TraceAP = {
 }
 const description = "This dataset contains samples of code metrics of files and a target that indicated the number " +
     "of fixes that occured to that file. SonarQube was used to " +
-    " measure atomic measurements. After that measurements of 10 predecessor CommitPaths were taken into account to" +
+    " measure atomic measurements. After that measurements of 3 predecessor CommitPaths were taken into account to" +
     " calculate SonarQubePredecessorMeasurements. Predecessors CommitPaths are the last changes of file in " +
-    "predecessors commits. The annotations are the number of fix indicating commit messages in the 10 next " +
+    "predecessors commits. The annotations are the number of fix indicating commit messages in the 3 next " +
     "CommitPaths (next changes to that file). A fix indicating commit msg is a msg that contains words like bug, fix," +
     " error or fail, affects less or equal than 2 files is not a merge commit and if the CommitPath is not a test file."
 
@@ -251,8 +251,6 @@ const ignoreFeatures = [
     'maxRelDiffSqaleDebtRatio',
     'maxRelDiffCognitiveComplexity'
 ]
-
-
 
 // Preprocessor and its config
 container.bind<Preprocessor<CommitPath, number, SonarQubePredecessorMeasurement>>(

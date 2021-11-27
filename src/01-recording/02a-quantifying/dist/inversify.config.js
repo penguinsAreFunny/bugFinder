@@ -1,0 +1,88 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.container = void 0;
+var inversify_1 = require("inversify");
+var bugfinder_framework_1 = require("bugfinder-framework");
+var path_1 = __importDefault(require("path"));
+var bugfinder_localityrecorder_commit_1 = require("bugfinder-localityrecorder-commit");
+var child_process_1 = require("child_process");
+var bugfinder_commitpath_quantifier_sonarqube_1 = require("bugfinder-commitpath-quantifier-sonarqube");
+var bugfinder_commitpath_db_mongodb_1 = require("bugfinder-commitpath-db-mongodb");
+var bugfinder_commitpath_quantifier_sonarqubepredecessors_1 = require("bugfinder-commitpath-quantifier-sonarqubepredecessors");
+var container = new inversify_1.Container();
+exports.container = container;
+var mongoDBConfig = {
+    url: "mongodb://localhost:27017",
+    dbName: "EXPERIMENTAL"
+};
+var testFileMatcher = /(test?\/.*\.*)/;
+var projectRoot = path_1.default.join(process.cwd(), "../repositories/TypeScript");
+var propertiesPath = path_1.default.join(process.cwd(), "./src/01-recording/02a-quantifying/sonar-qube-properties/typescript.properties");
+var typescriptPreHook = function () {
+    (0, child_process_1.execSync)("npm install", { cwd: projectRoot });
+};
+var hooks = [
+    typescriptPreHook
+];
+var sonarQubeConfig = {
+    propertiesPath: propertiesPath,
+    sonarQubeURL: "http://localhost:9000/",
+    id: "admin",
+    pw: "sonarqubepassword",
+    preHooks: hooks
+};
+var gitOptions = {
+    baseDir: projectRoot,
+    maxConcurrentProcesses: 4,
+};
+var logOptions = {
+    debugToConsole: true,
+    errorToConsole: true,
+    infoToConsole: true,
+    traceToConsole: true,
+    warnToConsole: true,
+    logFile: "./log.txt",
+};
+// binding quantifier and its dependencies
+container.bind(bugfinder_framework_1.QUANTIFIER_TYPES.quantifier)
+    .to(bugfinder_commitpath_quantifier_sonarqubepredecessors_1.SonarQubePredecessorsQuantifier);
+container.bind(bugfinder_commitpath_quantifier_sonarqubepredecessors_1.BUGFINDER_COMMITPATH_QUANTIFIER_SONARQUBEPREDECESSORS_TYPES.sonarQube)
+    .to(bugfinder_commitpath_quantifier_sonarqube_1.SonarQubeQuantifier);
+container.bind(bugfinder_commitpath_quantifier_sonarqube_1.BUGFINDER_COMMITPATH_QUANTIFIER_SONARQUBE_TYPES.sonarQubeConfig)
+    .toConstantValue(sonarQubeConfig);
+// binding cache and its dependencies
+container.bind(bugfinder_commitpath_quantifier_sonarqubepredecessors_1.BUGFINDER_COMMITPATH_QUANTIFIER_SONARQUBEPREDECESSORS_TYPES.cache).to(bugfinder_commitpath_quantifier_sonarqubepredecessors_1.RAMCache);
+container.bind(bugfinder_commitpath_quantifier_sonarqubepredecessors_1.BUGFINDER_COMMITPATH_QUANTIFIER_SONARQUBEPREDECESSORS_TYPES.db).to(bugfinder_commitpath_db_mongodb_1.CommitPathsMongoDB);
+container.bind(bugfinder_commitpath_quantifier_sonarqubepredecessors_1.BUGFINDER_COMMITPATH_QUANTIFIER_SONARQUBEPREDECESSORS_TYPES.cacheID)
+    .toConstantValue("QuantificationsCache");
+container.bind(bugfinder_commitpath_quantifier_sonarqubepredecessors_1.BUGFINDER_COMMITPATH_QUANTIFIER_SONARQUBEPREDECESSORS_TYPES.n)
+    .toConstantValue(2);
+container.bind(bugfinder_commitpath_quantifier_sonarqubepredecessors_1.BUGFINDER_COMMITPATH_QUANTIFIER_SONARQUBEPREDECESSORS_TYPES.upToN)
+    .toConstantValue(false);
+container.bind(bugfinder_commitpath_quantifier_sonarqubepredecessors_1.BUGFINDER_COMMITPATH_QUANTIFIER_SONARQUBEPREDECESSORS_TYPES.uniqueMode)
+    .toConstantValue(false);
+container.bind(bugfinder_commitpath_quantifier_sonarqubepredecessors_1.BUGFINDER_COMMITPATH_QUANTIFIER_SONARQUBEPREDECESSORS_TYPES.useThisCommitPath)
+    .toConstantValue(true);
+// binding Git and its dependencies
+container.bind(bugfinder_commitpath_quantifier_sonarqube_1.BUGFINDER_COMMITPATH_QUANTIFIER_SONARQUBE_TYPES.git).to(bugfinder_localityrecorder_commit_1.GitImpl);
+container.bind(bugfinder_localityrecorder_commit_1.BUGFINDER_LOCALITYRECORDER_COMMIT_TYPES.madFilesFromCommitParser)
+    .to(bugfinder_localityrecorder_commit_1.MADFilesFromLog);
+container.bind(bugfinder_localityrecorder_commit_1.BUGFINDER_LOCALITYRECORDER_COMMIT_TYPES.gitCommitParser)
+    .to(bugfinder_localityrecorder_commit_1.FormatParser);
+container.bind(bugfinder_localityrecorder_commit_1.BUGFINDER_LOCALITYRECORDER_COMMIT_TYPES.gitOptions)
+    .toConstantValue(gitOptions);
+// binding DB and its dependencies
+container.bind(bugfinder_framework_1.QUANTIFIER_TYPES.db)
+    .to(bugfinder_commitpath_db_mongodb_1.CommitPathsMongoDB);
+container.bind(bugfinder_commitpath_db_mongodb_1.BUGFINDER_DB_COMMITPATH_MONGODB_TYPES.mongoDBConfig)
+    .toConstantValue(mongoDBConfig);
+// binding shared logger
+container.bind(bugfinder_framework_1.SHARED_TYPES.logger).to(bugfinder_framework_1.FileAndConsoleLogger);
+container.bind(bugfinder_framework_1.SHARED_TYPES.logConfig).toConstantValue(logOptions);
+// binding QuantificationFactory
+container.bind(bugfinder_framework_1.QUANTIFIER_TYPES.quantificationFactory)
+    .to(bugfinder_framework_1.QuantificationFactory);
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW52ZXJzaWZ5LmNvbmZpZy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uL2ludmVyc2lmeS5jb25maWcudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBQUEsdUNBQW9DO0FBRXBDLDJEQUU2QjtBQUU3Qiw4Q0FBd0I7QUFDeEIsdUZBSzJDO0FBQzNDLCtDQUF1QztBQUN2Qyx1R0FLbUQ7QUFFbkQsbUZBQTBHO0FBQzFHLCtIQUkrRDtBQUUvRCxJQUFNLFNBQVMsR0FBRyxJQUFJLHFCQUFTLEVBQUUsQ0FBQTtBQW9GekIsOEJBQVM7QUFuRmpCLElBQU0sYUFBYSxHQUFrQjtJQUNqQyxHQUFHLEVBQUUsMkJBQTJCO0lBQ2hDLE1BQU0sRUFBRSxjQUFjO0NBQ3pCLENBQUE7QUFDRCxJQUFNLGVBQWUsR0FBRyxnQkFBZ0IsQ0FBQTtBQUN4QyxJQUFNLFdBQVcsR0FBVyxjQUFJLENBQUMsSUFBSSxDQUFDLE9BQU8sQ0FBQyxHQUFHLEVBQUUsRUFBRSw0QkFBNEIsQ0FBQyxDQUFDO0FBQ25GLElBQU0sY0FBYyxHQUFXLGNBQUksQ0FBQyxJQUFJLENBQUMsT0FBTyxDQUFDLEdBQUcsRUFBRSxFQUFFLGdGQUFnRixDQUFDLENBQUE7QUFFekksSUFBTSxpQkFBaUIsR0FBZTtJQUNsQyxJQUFBLHdCQUFRLEVBQUMsYUFBYSxFQUFFLEVBQUMsR0FBRyxFQUFFLFdBQVcsRUFBQyxDQUFDLENBQUM7QUFDaEQsQ0FBQyxDQUFBO0FBRUQsSUFBTSxLQUFLLEdBQW1CO0lBQzFCLGlCQUFpQjtDQUNwQixDQUFDO0FBRUYsSUFBTSxlQUFlLEdBQW9CO0lBQ3JDLGNBQWMsRUFBRSxjQUFjO0lBQzlCLFlBQVksRUFBRSx3QkFBd0I7SUFDdEMsRUFBRSxFQUFFLE9BQU87SUFDWCxFQUFFLEVBQUUsbUJBQW1CO0lBQ3ZCLFFBQVEsRUFBRSxLQUFLO0NBQ2xCLENBQUE7QUFDRCxJQUFNLFVBQVUsR0FBZTtJQUMzQixPQUFPLEVBQUUsV0FBVztJQUNwQixzQkFB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
