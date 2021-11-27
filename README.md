@@ -27,7 +27,14 @@ and implementation-packages of bugFinder-framework-interfaces.
 - [Blackboard](#blackboard)
   * [Controller](#controller)
   * [Knowledge Sources](#knowledge-sources)
-
+- [Knowledge sources available](#knowledge-sources-available)
+  * [DB](#db)
+  * [LocalityRecorder (and therefore localities)](#localityrecorder--and-therefore-localities-)
+  * [LocalityPreprocessors](#localitypreprocessors)
+  * [Quantifier](#quantifier)
+  * [Annotator](#annotator)
+  * [Preprocessor](#preprocessor)
+  * [Machine Learning](#machine-learning-1)
 <!-- <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small> -->
 
 # Pre
@@ -97,3 +104,33 @@ The controllers are pictured on the left side of the picture. The Recording-Comp
 the components localityRecording, localityPreprocessing, quantifying and annotating.  
 ## Knowledge Sources
 The knowledge sources (right part of the picture) can be exchanged. Dependency injection with [InversifyJS](#https://github.com/inversify/InversifyJS) is used.
+
+
+# Knowledge sources available
+You can find different components realisations open source on github and npm.
+Search for bugfinder-*
+## DB
+- [Commit-MongoDB](https://www.npmjs.com/package/bugfinder-commit-db-mongodb)
+- [CommitPath-MongoDB](https://www.npmjs.com/package/bugfinder-commitpath-db-mongodb)
+
+## LocalityRecorder (and therefore localities)
+npm search: bugfinder-localityrecorder-*
+- [CommitPath](https://www.npmjs.com/package/bugfinder-localityrecorder-commitpath)
+- [Commit](https://www.npmjs.com/package/bugfinder-localityrecorder-commit)
+
+## LocalityPreprocessors
+npm search: bugfinder-$LOCALITY_CLASS-localityPreprocessor-* 
+- [Predecessors](https://www.npmjs.com/package/bugfinder-commitpath-localitypreprocessor-commitsubset)
+## Quantifier
+npm search: bugfinder-$LOCALITY_CLASS-quantifier-*
+- [SonarQube](https://github.com/penguinsAreFunny/bugFinder-commitPath-quantifier-sonarqube)
+- [SonarQubePredecessors](https://github.com/penguinsAreFunny/bugFinder-commitPath-quantifier-sonarqubePredecessors)
+## Annotator
+npm search: bugfinder-$LOCALITY_CLASS-annotator-*
+- [CommitMsg](https://www.npmjs.com/package/bugfinder-commitpath-annotator-commitmsg)
+- [CommitMsgPredecessors](https://github.com/penguinsAreFunny/bugFinder-commitPath-annotator-commitMsgPredecessors)
+## Preprocessor
+npm search: bugfinder-$LOCALITY_CLASS-$ANNOTATION_TYPE-$QUANTIFICATION_TYPE-preprocessor-*
+- [featureSelection](https://github.com/penguinsAreFunny/bugFinder-commitpath-number-sonarqube-preprocessor-featureSelection)
+## Machine Learning
+- [bugFinder-machineLearning](https://github.com/penguinsAreFunny/bugFinder-machineLearning)  
