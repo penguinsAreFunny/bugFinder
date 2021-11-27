@@ -95,8 +95,8 @@ With the goal of achieving a dataset, which can be easily used with [scikit-lear
 quantified and annotated localities need to be transformed to a suitable format. You might want to filter features or samples you do not want to consider.
 
 # Blackboard  
-![solution_strategy](./doc/loesungsstrategie.svg | width=75)  
-![recording](./doc/Bausteinsicht-Recording.svg | width=75)  
+<img src="https://github.com/penguinsAreFunny/bugFinder/blob/master/doc/loesungsstrategie.svg" width=75 height=75/>  
+<img src="https://github.com/penguinsAreFunny/bugFinder/blob/master/doc/Bausteinsicht-Recording.svg" width=75 height=75/>  
 
 ## Controller
 For each step of the pipeline there is a controller. Each steps uses a knowledge source.
