@@ -32,7 +32,7 @@ const mongoDBConfig: MongoDBConfig = {
     dbName: "EXPERIMENTAL"
 }
 const testFileMatcher = /(test?\/.*\.*)/
-const projectRoot: string = path.join(process.cwd(), "../repositories/TypeScript");
+const projectRoot: string = path.join(process.cwd(), "../TypeScript");
 const propertiesPath: string = path.join(process.cwd(), "./src/01-recording/02a-quantifying/sonar-qube-properties/typescript.properties")
 
 const typescriptPreHook: () => void = () => {

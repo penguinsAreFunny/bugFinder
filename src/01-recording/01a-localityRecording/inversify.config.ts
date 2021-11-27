@@ -22,7 +22,7 @@ import {Logger} from "ts-log";
 import {CommitToCommitPathMapper} from "bugfinder-localityrecorder-commitpath/dist/commitToCommitPath/commitToCommitPathMapper";
 
 const container = localityAContainer;
-const projectRoot: string = path.join(process.cwd(), "../repositories/TypeScript")
+const projectRoot: string = path.join(process.cwd(), "../TypeScript")
 
 const gitOptions: GitOptions = {
     baseDir: projectRoot,

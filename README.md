@@ -41,9 +41,12 @@ and implementation-packages of bugFinder-framework-interfaces.
 ```
 git submodule update --init --recursive  
 npm install  
+cd ..
+git clone https://github.com/microsoft/TypeScript.git
 ```
 You won´t need SonarQube, if you do not like to quantify with SonarQubeQuantifier.  
 If you do not want to use localityRecorder-commit or localityRecorder-commitPath you won´t need git either.  
+You won´t need to clone the TypeScript repository, if you do not like to quantify TypeScript.  
 Used versions
 ```
 git v2.33.1
