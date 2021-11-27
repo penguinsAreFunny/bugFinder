@@ -90,7 +90,7 @@ You need to annotate you localities to generate able to generate a suitable data
 Do the localities contain a bug or do the not? 
 F.e. Take the next five changes of a file into account and measure how many bug fixes were made.
 ## Preprocess quantified and annotated localities
-With the goal of achieving a dataset, which can be easily used with [scikit-learn](#https://scikit-learn.org/stable/) your
+With the goal of achieving a dataset, which can be easily used with [scikit-learn](https://scikit-learn.org/stable/) your
 quantified and annotated localities need to be transformed to a suitable format. You might want to filter features or samples you do not want to consider.
 
 # Blackboard  
