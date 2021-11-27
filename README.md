@@ -106,7 +106,7 @@ the components localityRecording, localityPreprocessing, quantifying and annotat
 The knowledge sources (right part of the picture) can be exchanged. Dependency injection with [InversifyJS](#https://github.com/inversify/InversifyJS) is used.
 
 
-# Knowledge sources available
+# Knowledge sources and components available
 You can find different components realisations open source on github and npm.
 Search for bugfinder-*
 ## DB
