@@ -76,8 +76,7 @@ The architecture of this project is based on a pipeline and a blackboard archite
 
 # Pipeline
 The whole process of finding bugs in source code with machine learning is modeled as a pipeline:  
-![Machine_Learning_Pipeline](./doc/Pipeline.svg | width=75)  
-
+<img src="https://github.com/penguinsAreFunny/bugFinder/blob/master/doc/Pipeline.svg" width=75% height=75%/>  
 
 ## Record localities
 Record localities you want to find bugs in. F.e. a Commit or a path in a commit.
