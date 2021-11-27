@@ -76,8 +76,9 @@ The architecture of this project is based on a pipeline and a blackboard archite
 
 # Pipeline
 The whole process of finding bugs in source code with machine learning is modeled as a pipeline:  
-<img src="https://github.com/penguinsAreFunny/bugFinder/blob/master/doc/Pipeline.svg" width=75% height=75%/>  
-
+<p align="center">
+    <img src="https://github.com/penguinsAreFunny/bugFinder/blob/master/doc/Pipeline.svg" width=75% height=75%/>  
+</p>
 ## Record localities
 Record localities you want to find bugs in. F.e. a Commit or a path in a commit.
 ## Preprocess localities
@@ -94,9 +95,12 @@ With the goal of achieving a dataset, which can be easily used with [scikit-lear
 quantified and annotated localities need to be transformed to a suitable format. You might want to filter features or samples you do not want to consider.
 
 # Blackboard  
-<img src="https://github.com/penguinsAreFunny/bugFinder/blob/master/doc/loesungsstrategie.svg" width=75% height=75%/>  
-<img src="https://github.com/penguinsAreFunny/bugFinder/blob/master/doc/Bausteinsicht-Recording.svg" width=75% height=75%/>  
-
+<p align="center">
+    <img align="center" src="https://github.com/penguinsAreFunny/bugFinder/blob/master/doc/loesungsstrategie.svg" width=75% height=75%/>  
+</p>
+<p align="center">
+    <img src="https://github.com/penguinsAreFunny/bugFinder/blob/master/doc/Bausteinsicht-Recording.svg" width=75% height=75%/>  
+</p>
 ## Controller
 For each step of the pipeline there is a controller. Each steps uses a knowledge source.
 The controllers are pictured on the left side of the picture. The Recording-Component consists of
