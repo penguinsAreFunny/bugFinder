@@ -104,6 +104,7 @@ quantified and annotated localities need to be transformed to a suitable format.
 <p align="center">
     <img src="https://github.com/penguinsAreFunny/bugFinder/blob/master/doc/Bausteinsicht-Recording.svg" width=75% height=75%/>  
 </p>
+
 ## Controller
 For each step of the pipeline there is a controller. Each steps uses a knowledge source.
 The controllers are pictured on the left side of the picture. The Recording-Component consists of
