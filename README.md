@@ -52,7 +52,14 @@ Used versions
 git v2.33.1
 SonarQube v9.0.1.46107  
 node v14.17.0
+MongoDB v4.4.1 2008R2Plus SSL
 ```
+## Before running recording-02a-quantifying  
+1. Add SonarScanner.bat to your path environment variable
+2. Start the SonarQube-Server
+3. Configure a project in the SonarQube-Webinterface (See SonarQube official documentation)
+4. Adjust quantifying config to your needs: src/01-recording/02a-quantifying/inversify.config.ts
+
 # Configuration
 Each script has a configuration file.  
 See src/.../module_name/inversify.config.ts
