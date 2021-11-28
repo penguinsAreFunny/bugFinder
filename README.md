@@ -43,6 +43,7 @@ git submodule update --init --recursive
 npm install  
 cd ..
 git clone https://github.com/microsoft/TypeScript.git
+cd TypeScript && git checkout -f 474cf0d57586ff7e6ea1b09210dd3da642de2030
 ```
 You won´t need SonarQube, if you do not like to quantify with SonarQubeQuantifier.  
 If you do not want to use localityRecorder-commit or localityRecorder-commitPath you won´t need git either.  
@@ -55,6 +56,7 @@ node v14.17.0
 MongoDB v4.4.1 2008R2Plus SSL
 ```
 ## Before running recording-02a-quantifying  
+Read [SonarQube-Documentation](#https://docs.sonarqube.org/latest/) carefully and follow the instructions.
 1. Add SonarScanner.bat to your path environment variable
 2. Start the SonarQube-Server
 3. Configure a project in the SonarQube-Webinterface (See SonarQube official documentation)
