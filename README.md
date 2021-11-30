@@ -7,7 +7,11 @@ It uses partial implementations of the bugFinder-framework which are placed in
 the packages directory. You can find these packages on npm, too.   
 
 This package uses [bugFinder-framework](https://github.com/penguinsAreFunny/bugFinder-framework)
-and implementation-packages of bugFinder-framework-interfaces.
+and implementation-packages of bugFinder-framework-interfaces.  
+
+Have a look at the [thesis](https://github.com/penguinsAreFunny/bugFinder/blob/master/thesis/Masterarbeit.pdf) of this project. 
+Especially chapter 4 is part of the documentation of this project and especially of its plugins. 
+The thesis is written in german, but all illustrations are in english and you might understand a lot of chapter 4.
 
 
 # Table of contents
